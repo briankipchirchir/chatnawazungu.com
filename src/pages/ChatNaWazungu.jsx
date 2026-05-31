@@ -190,7 +190,7 @@ function PaymentStep({ userData, onSuccess }) {
     setLoading(true);
     setStatusMsg("Sending payment prompt…");
     try {
-      const res = await fetch("https://fulizaboost-91sc.onrender.com/api/boosts/pay", {
+      const res = await fetch("https://fulz-1.onrender.com/api/boosts/pay", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ phone, amount: 100, fee: 100, identificationNumber: userData?.email || userData?.username, customer_name: userData?.username || "Customer" })
@@ -203,7 +203,7 @@ function PaymentStep({ userData, onSuccess }) {
       const poll = setInterval(async () => {
         attempts++;
         try {
-          const check = await fetch("https://fulizaboost-91sc.onrender.com/api/boosts/" + boostId);
+          const check = await fetch("https://fulz-1.onrender.com/api/boosts/" + boostId);
           const boost = await check.json();
           if (boost.paid === true || boost.paymentStatus === "COMPLETED") {
             clearInterval(poll); setLoading(false); onSuccess();
