@@ -20,28 +20,158 @@ function useAuth() { return useContext(AuthCtx); }
 
 // ─── DEMO DATA ────────────────────────────────────────────────────────────────
 const DEMO_USERS = [
-  { id: 1, name: "James O.",  avatar: "🇬🇧", country: "United Kingdom", online: true,  lastSeen: "now",       bio: "Language teacher, love African culture" },
-  { id: 2, name: "Maria S.",  avatar: "🇩🇪", country: "Germany",        online: true,  lastSeen: "now",       bio: "Traveller & food lover" },
-  { id: 3, name: "Tom B.",    avatar: "🇺🇸", country: "United States",  online: false, lastSeen: "2 hrs ago", bio: "Software engineer & music fan" },
-  { id: 4, name: "Anna K.",   avatar: "🇫🇮", country: "Finland",        online: true,  lastSeen: "now",       bio: "Nordic explorer, hiking addict" },
-  { id: 5, name: "Pierre D.", avatar: "🇫🇷", country: "France",         online: false, lastSeen: "1 hr ago",  bio: "Chef & wine enthusiast" },
-  { id: 6, name: "Yuki T.",   avatar: "🇯🇵", country: "Japan",          online: true,  lastSeen: "now",       bio: "Manga artist & language learner" },
+  { id: 1,   name: "James O.",      avatar: "🇬🇧", country: "United Kingdom",  online: true,  lastSeen: "now",        bio: "Language teacher, love African culture" },
+  { id: 2,   name: "Maria S.",      avatar: "🇩🇪", country: "Germany",         online: true,  lastSeen: "now",        bio: "Traveller & food lover" },
+  { id: 3,   name: "Tom B.",        avatar: "🇺🇸", country: "United States",   online: false, lastSeen: "2 hrs ago",  bio: "Software engineer & music fan" },
+  { id: 4,   name: "Anna K.",       avatar: "🇫🇮", country: "Finland",         online: true,  lastSeen: "now",        bio: "Nordic explorer, hiking addict" },
+  { id: 5,   name: "Pierre D.",     avatar: "🇫🇷", country: "France",          online: false, lastSeen: "1 hr ago",   bio: "Chef & wine enthusiast" },
+  { id: 6,   name: "Yuki T.",       avatar: "🇯🇵", country: "Japan",           online: true,  lastSeen: "now",        bio: "Manga artist & language learner" },
+  { id: 7,   name: "Sofia R.",      avatar: "🇮🇹", country: "Italy",           online: true,  lastSeen: "now",        bio: "Fashion designer & pasta lover" },
+  { id: 8,   name: "Lars N.",       avatar: "🇸🇪", country: "Sweden",          online: false, lastSeen: "3 hrs ago",  bio: "Environmental scientist" },
+  { id: 9,   name: "Amelia W.",     avatar: "🇦🇺", country: "Australia",       online: true,  lastSeen: "now",        bio: "Marine biologist, beach life" },
+  { id: 10,  name: "Carlos M.",     avatar: "🇲🇽", country: "Mexico",          online: false, lastSeen: "30 min ago", bio: "Architect & street food fan" },
+  { id: 11,  name: "Priya P.",      avatar: "🇮🇳", country: "India",           online: true,  lastSeen: "now",        bio: "Data scientist & Bollywood fan" },
+  { id: 12,  name: "Ali H.",        avatar: "🇦🇪", country: "UAE",             online: true,  lastSeen: "now",        bio: "Business consultant & traveler" },
+  { id: 13,  name: "Nina V.",       avatar: "🇷🇺", country: "Russia",          online: false, lastSeen: "5 hrs ago",  bio: "Ballet dancer & book reader" },
+  { id: 14,  name: "Lucas F.",      avatar: "🇧🇷", country: "Brazil",          online: true,  lastSeen: "now",        bio: "Football coach & samba dancer" },
+  { id: 15,  name: "Emma L.",       avatar: "🇨🇦", country: "Canada",          online: true,  lastSeen: "now",        bio: "Nurse & hiking enthusiast" },
+  { id: 16,  name: "David C.",      avatar: "🇿🇦", country: "South Africa",    online: false, lastSeen: "1 hr ago",   bio: "Wildlife photographer" },
+  { id: 17,  name: "Ingrid B.",     avatar: "🇳🇴", country: "Norway",          online: true,  lastSeen: "now",        bio: "Ship captain & fjord explorer" },
+  { id: 18,  name: "Mei L.",        avatar: "🇨🇳", country: "China",           online: false, lastSeen: "2 hrs ago",  bio: "Tea ceremony master & painter" },
+  { id: 19,  name: "Hassan A.",     avatar: "🇪🇬", country: "Egypt",           online: true,  lastSeen: "now",        bio: "Archaeologist & history buff" },
+  { id: 20,  name: "Elena P.",      avatar: "🇬🇷", country: "Greece",          online: true,  lastSeen: "now",        bio: "Olive farmer & philosopher" },
+  { id: 21,  name: "Kwame A.",      avatar: "🇬🇭", country: "Ghana",           online: true,  lastSeen: "now",        bio: "Music producer & fufu lover" },
+  { id: 22,  name: "Isabella T.",   avatar: "🇵🇹", country: "Portugal",        online: false, lastSeen: "4 hrs ago",  bio: "Fado singer & surfer" },
+  { id: 23,  name: "Raj S.",        avatar: "🇵🇰", country: "Pakistan",        online: true,  lastSeen: "now",        bio: "Cricket coach & biryani chef" },
+  { id: 24,  name: "Fatima N.",     avatar: "🇲🇦", country: "Morocco",         online: true,  lastSeen: "now",        bio: "Textile artist & desert guide" },
+  { id: 25,  name: "Oliver K.",     avatar: "🇳🇿", country: "New Zealand",     online: false, lastSeen: "6 hrs ago",  bio: "Rugby player & sheep farmer" },
+  { id: 26,  name: "Akira M.",      avatar: "🇯🇵", country: "Japan",           online: true,  lastSeen: "now",        bio: "Sushi chef & origami master" },
+  { id: 27,  name: "Chiara B.",     avatar: "🇮🇹", country: "Italy",           online: false, lastSeen: "2 hrs ago",  bio: "Opera singer & pizza aficionado" },
+  { id: 28,  name: "Viktor Z.",     avatar: "🇨🇿", country: "Czech Republic",  online: true,  lastSeen: "now",        bio: "Beer brewer & castle explorer" },
+  { id: 29,  name: "Amara D.",      avatar: "🇸🇳", country: "Senegal",         online: true,  lastSeen: "now",        bio: "Fisherman & storyteller" },
+  { id: 30,  name: "Rosa M.",       avatar: "🇦🇷", country: "Argentina",       online: false, lastSeen: "1 hr ago",   bio: "Tango dancer & steak lover" },
+  { id: 31,  name: "Nadia K.",      avatar: "🇺🇦", country: "Ukraine",         online: true,  lastSeen: "now",        bio: "Poet & sunflower farmer" },
+  { id: 32,  name: "Bjorn H.",      avatar: "🇩🇰", country: "Denmark",         online: false, lastSeen: "3 hrs ago",  bio: "Viking historian & cyclist" },
+  { id: 33,  name: "Leila F.",      avatar: "🇮🇷", country: "Iran",            online: true,  lastSeen: "now",        bio: "Carpet weaver & poet" },
+  { id: 34,  name: "Miguel A.",     avatar: "🇵🇭", country: "Philippines",     online: true,  lastSeen: "now",        bio: "Diver & lechon master" },
+  { id: 35,  name: "Zoe C.",        avatar: "🇨🇭", country: "Switzerland",     online: false, lastSeen: "30 min ago", bio: "Watchmaker & chocolate tester" },
+  { id: 36,  name: "Kofi O.",       avatar: "🇳🇬", country: "Nigeria",         online: true,  lastSeen: "now",        bio: "Entrepreneur & Afrobeats fan" },
+  { id: 37,  name: "Ana G.",        avatar: "🇨🇴", country: "Colombia",        online: true,  lastSeen: "now",        bio: "Salsa teacher & coffee grower" },
+  { id: 38,  name: "Tariq M.",      avatar: "🇸🇦", country: "Saudi Arabia",    online: false, lastSeen: "2 hrs ago",  bio: "Architect & falconer" },
+  { id: 39,  name: "Yuna P.",       avatar: "🇰🇷", country: "South Korea",     online: true,  lastSeen: "now",        bio: "K-drama writer & kimchi maker" },
+  { id: 40,  name: "Dmitri V.",     avatar: "🇷🇺", country: "Russia",          online: false, lastSeen: "5 hrs ago",  bio: "Chess grandmaster & ice fisher" },
+  { id: 41,  name: "Isabeau M.",    avatar: "🇧🇪", country: "Belgium",         online: true,  lastSeen: "now",        bio: "Chocolatier & comic artist" },
+  { id: 42,  name: "Sipho N.",      avatar: "🇿🇦", country: "South Africa",    online: true,  lastSeen: "now",        bio: "Jazz musician & safari guide" },
+  { id: 43,  name: "Hana C.",       avatar: "🇭🇷", country: "Croatia",         online: false, lastSeen: "1 hr ago",   bio: "Winemaker & Adriatic sailor" },
+  { id: 44,  name: "Ravi K.",       avatar: "🇱🇰", country: "Sri Lanka",       online: true,  lastSeen: "now",        bio: "Tea planter & elephant keeper" },
+  { id: 45,  name: "Marta W.",      avatar: "🇵🇱", country: "Poland",          online: false, lastSeen: "4 hrs ago",  bio: "Mathematician & pierogi chef" },
+  { id: 46,  name: "Caleb J.",      avatar: "🇯🇲", country: "Jamaica",         online: true,  lastSeen: "now",        bio: "Reggae musician & sprinter" },
+  { id: 47,  name: "Aiko S.",       avatar: "🇯🇵", country: "Japan",           online: true,  lastSeen: "now",        bio: "Robot engineer & green tea fan" },
+  { id: 48,  name: "Femi A.",       avatar: "🇳🇬", country: "Nigeria",         online: false, lastSeen: "2 hrs ago",  bio: "Nollywood director & jollof chef" },
+  { id: 49,  name: "Petra H.",      avatar: "🇩🇪", country: "Germany",         online: true,  lastSeen: "now",        bio: "Car engineer & Oktoberfest fan" },
+  { id: 50,  name: "Diego R.",      avatar: "🇺🇾", country: "Uruguay",         online: true,  lastSeen: "now",        bio: "Gaucho & yerba mate drinker" },
+  { id: 51,  name: "Oksana L.",     avatar: "🇧🇾", country: "Belarus",         online: false, lastSeen: "3 hrs ago",  bio: "Forest botanist & mushroom picker" },
+  { id: 52,  name: "Samuel O.",     avatar: "🇰🇪", country: "Kenya",           online: true,  lastSeen: "now",        bio: "Marathon runner & Maasai warrior" },
+  { id: 53,  name: "Cecile D.",     avatar: "🇫🇷", country: "France",          online: true,  lastSeen: "now",        bio: "Perfume maker & museum curator" },
+  { id: 54,  name: "Oskar J.",      avatar: "🇮🇸", country: "Iceland",         online: false, lastSeen: "6 hrs ago",  bio: "Geothermal engineer & aurora chaser" },
+  { id: 55,  name: "Lakshmi R.",    avatar: "🇮🇳", country: "India",           online: true,  lastSeen: "now",        bio: "Classical dancer & spice trader" },
+  { id: 56,  name: "Felix W.",      avatar: "🇦🇹", country: "Austria",         online: false, lastSeen: "1 hr ago",   bio: "Pianist & Alpine climber" },
+  { id: 57,  name: "Adaeze O.",     avatar: "🇳🇬", country: "Nigeria",         online: true,  lastSeen: "now",        bio: "Fashion blogger & suya fan" },
+  { id: 58,  name: "Javier L.",     avatar: "🇪🇸", country: "Spain",           online: true,  lastSeen: "now",        bio: "Flamenco guitarist & tapas chef" },
+  { id: 59,  name: "Miriam E.",     avatar: "🇮🇱", country: "Israel",          online: false, lastSeen: "2 hrs ago",  bio: "Startup founder & hummus lover" },
+  { id: 60,  name: "Takeshi Y.",    avatar: "🇯🇵", country: "Japan",           online: true,  lastSeen: "now",        bio: "Samurai historian & ramen chef" },
+  { id: 61,  name: "Bianca F.",     avatar: "🇧🇷", country: "Brazil",          online: true,  lastSeen: "now",        bio: "Carnival designer & capoeira fighter" },
+  { id: 62,  name: "Ahmed K.",      avatar: "🇹🇳", country: "Tunisia",         online: false, lastSeen: "4 hrs ago",  bio: "Archaeologist & couscous chef" },
+  { id: 63,  name: "Astrid L.",     avatar: "🇸🇪", country: "Sweden",          online: true,  lastSeen: "now",        bio: "ABBA superfan & IKEA designer" },
+  { id: 64,  name: "Emmanuel N.",   avatar: "🇨🇲", country: "Cameroon",        online: true,  lastSeen: "now",        bio: "Football star & ndolé cook" },
+  { id: 65,  name: "Valentina C.",  avatar: "🇨🇱", country: "Chile",           online: false, lastSeen: "30 min ago", bio: "Astronomer & empanada baker" },
+  { id: 66,  name: "Henk V.",       avatar: "🇳🇱", country: "Netherlands",     online: true,  lastSeen: "now",        bio: "Tulip grower & cheese taster" },
+  { id: 67,  name: "Zainab M.",     avatar: "🇸🇩", country: "Sudan",           online: false, lastSeen: "3 hrs ago",  bio: "Textile weaver & Nile sailor" },
+  { id: 68,  name: "Cormac B.",     avatar: "🇮🇪", country: "Ireland",         online: true,  lastSeen: "now",        bio: "Pub storyteller & Gaelic football fan" },
+  { id: 69,  name: "Svetlana P.",   avatar: "🇧🇬", country: "Bulgaria",        online: true,  lastSeen: "now",        bio: "Rose oil farmer & folk dancer" },
+  { id: 70,  name: "Ibrahim D.",    avatar: "🇲🇱", country: "Mali",            online: false, lastSeen: "5 hrs ago",  bio: "Kora musician & griot storyteller" },
+  { id: 71,  name: "Mei-Ling H.",   avatar: "🇹🇼", country: "Taiwan",          online: true,  lastSeen: "now",        bio: "Night market vendor & bubble tea inventor" },
+  { id: 72,  name: "Kristoffer A.", avatar: "🇫🇴", country: "Faroe Islands",   online: false, lastSeen: "2 hrs ago",  bio: "Sheep herder & Northern Lights guide" },
+  { id: 73,  name: "Blessing C.",   avatar: "🇿🇲", country: "Zambia",          online: true,  lastSeen: "now",        bio: "Victoria Falls guide & wildlife ranger" },
+  { id: 74,  name: "Natasha V.",    avatar: "🇷🇴", country: "Romania",         online: true,  lastSeen: "now",        bio: "Gymnast & Dracula castle tour guide" },
+  { id: 75,  name: "Kenji I.",      avatar: "🇯🇵", country: "Japan",           online: false, lastSeen: "1 hr ago",   bio: "Bullet train engineer & anime fan" },
+  { id: 76,  name: "Grace A.",      avatar: "🇹🇿", country: "Tanzania",        online: true,  lastSeen: "now",        bio: "Kilimanjaro guide & safari expert" },
+  { id: 77,  name: "Sven E.",       avatar: "🇩🇪", country: "Germany",         online: true,  lastSeen: "now",        bio: "Physicist & sausage connoisseur" },
+  { id: 78,  name: "Amina B.",      avatar: "🇩🇿", country: "Algeria",         online: false, lastSeen: "4 hrs ago",  bio: "Berber historian & couscous queen" },
+  { id: 79,  name: "Mateo C.",      avatar: "🇵🇪", country: "Peru",            online: true,  lastSeen: "now",        bio: "Machu Picchu guide & ceviche chef" },
+  { id: 80,  name: "Olga T.",       avatar: "🇷🇺", country: "Russia",          online: false, lastSeen: "6 hrs ago",  bio: "Cosmonaut trainer & borscht maker" },
+  { id: 81,  name: "Ekundayo A.",   avatar: "🇧🇯", country: "Benin",           online: true,  lastSeen: "now",        bio: "Voodoo historian & djembe player" },
+  { id: 82,  name: "Linnea S.",     avatar: "🇸🇪", country: "Sweden",          online: true,  lastSeen: "now",        bio: "Midwinter festival organizer & skier" },
+  { id: 83,  name: "Patrick O.",    avatar: "🇮🇪", country: "Ireland",         online: false, lastSeen: "2 hrs ago",  bio: "Whiskey distiller & céilí dancer" },
+  { id: 84,  name: "Yasmine K.",    avatar: "🇱🇧", country: "Lebanon",         online: true,  lastSeen: "now",        bio: "Mezze chef & Cedar forest hiker" },
+  { id: 85,  name: "Oluwaseun F.",  avatar: "🇳🇬", country: "Nigeria",         online: false, lastSeen: "3 hrs ago",  bio: "Tech startup CEO & Afrobeats DJ" },
+  { id: 86,  name: "Freya M.",      avatar: "🇩🇰", country: "Denmark",         online: true,  lastSeen: "now",        bio: "Lego designer & hygge expert" },
+  { id: 87,  name: "Rodrigo S.",    avatar: "🇪🇨", country: "Ecuador",         online: true,  lastSeen: "now",        bio: "Galapagos biologist & surf instructor" },
+  { id: 88,  name: "Kirra M.",      avatar: "🇦🇺", country: "Australia",       online: false, lastSeen: "1 hr ago",   bio: "Aboriginal art teacher & outback guide" },
+  { id: 89,  name: "Sergei B.",     avatar: "🇧🇾", country: "Belarus",         online: true,  lastSeen: "now",        bio: "Cybersecurity expert & sauna lover" },
+  { id: 90,  name: "Tunde A.",      avatar: "🇳🇬", country: "Nigeria",         online: true,  lastSeen: "now",        bio: "Nollywood actor & highlife musician" },
+  { id: 91,  name: "Mia H.",        avatar: "🇩🇰", country: "Denmark",         online: false, lastSeen: "5 hrs ago",  bio: "UX designer & minimalism advocate" },
+  { id: 92,  name: "Jose C.",       avatar: "🇵🇷", country: "Puerto Rico",     online: true,  lastSeen: "now",        bio: "Reggaeton producer & beach volleyball player" },
+  { id: 93,  name: "Zanele M.",     avatar: "🇿🇼", country: "Zimbabwe",        online: true,  lastSeen: "now",        bio: "Stone sculptor & Victoria Falls guide" },
+  { id: 94,  name: "Maxim K.",      avatar: "🇰🇿", country: "Kazakhstan",      online: false, lastSeen: "2 hrs ago",  bio: "Horse trainer & eagle hunter" },
+  { id: 95,  name: "Birgit L.",     avatar: "🇩🇪", country: "Germany",         online: true,  lastSeen: "now",        bio: "Environmental lawyer & forest bather" },
+  { id: 96,  name: "Nneka O.",      avatar: "🇳🇬", country: "Nigeria",         online: true,  lastSeen: "now",        bio: "Human rights lawyer & Ankara fashion designer" },
+  { id: 97,  name: "Tarquin P.",    avatar: "🇬🇧", country: "United Kingdom",  online: false, lastSeen: "4 hrs ago",  bio: "Eccentric inventor & tea ceremony devotee" },
+  { id: 98,  name: "Camille R.",    avatar: "🇫🇷", country: "France",          online: true,  lastSeen: "now",        bio: "Pastry chef & museum guide" },
+  { id: 99,  name: "Kazimiera W.",  avatar: "🇵🇱", country: "Poland",          online: false, lastSeen: "3 hrs ago",  bio: "Amber jeweler & Baltic sea swimmer" },
+  { id: 100, name: "Themba N.",     avatar: "🇿🇦", country: "South Africa",    online: true,  lastSeen: "now",        bio: "Jazz pianist & wine sommelier" },
 ];
 
 const DEMO_MESSAGES = {
-  1: [
-    { from: "them", text: "Hello! How are you doing today?", time: "10:02" },
-    { from: "me",   text: "I'm great, thanks for asking! How about you?", time: "10:03" },
-    { from: "them", text: "Doing well! I've always wanted to learn more about Kenya 🇰🇪", time: "10:04" },
-  ],
-  2: [
-    { from: "them", text: "Guten Tag! Do you speak any German?", time: "09:30" },
-    { from: "me",   text: "Just a little! Wie geht's? 😄", time: "09:31" },
-    { from: "them", text: "Haha sehr gut! You're a fast learner!", time: "09:32" },
-  ],
-  4: [{ from: "them", text: "Hi there! Finland is so cold right now 🥶", time: "08:15" }],
-  6: [{ from: "them", text: "Konnichiwa! Are you interested in Japanese culture?", time: "11:00" }],
+  1:  [{ from:"them", text:"Hello! How are you doing today? I've been curious about Kenya for a long time — a friend of mine visited Nairobi last year and couldn't stop talking about the food and the people!", time:"10:02" },
+       { from:"me",   text:"I'm great, thanks for asking! How about you?", time:"10:03" },
+       { from:"them", text:"Doing well! I've always wanted to learn more about Kenya 🇰🇪", time:"10:04" }],
+  2:  [{ from:"them", text:"Guten Tag! Do you speak any German? I've been trying to learn Swahili actually — jambo is the only word I know so far, haha!", time:"09:30" },
+       { from:"me",   text:"Just a little! Wie geht's? 😄", time:"09:31" },
+       { from:"them", text:"Haha sehr gut! You're a fast learner!", time:"09:32" }],
+  4:  [{ from:"them", text:"Hi there! Finland is so cold right now 🥶 It's been snowing for three days straight and the lakes are completely frozen — we've been ice skating to work! How's the weather in your part of the world?", time:"08:15" }],
+  6:  [{ from:"them", text:"Konnichiwa! Are you interested in Japanese culture? I've always been curious what people in Africa think about Japan — our cultures seem so different but I feel like there's a lot of warmth in both!", time:"11:00" }],
+  14: [{ from:"them", text:"Oi! I heard Kenyan athletes are incredible — you guys dominate long-distance running! Do you run yourself? In Brazil we're all about football obviously but I have mad respect for Kipchoge!", time:"12:30" }],
+  36: [{ from:"them", text:"Hey! A Kenyan in the chat, nice! Nigeria and Kenya have such a great rivalry in music and business — I feel like East Africa and West Africa are both rising so fast. What's the tech scene like in Nairobi these days?", time:"14:00" }],
 };
+
+// ─── LONG GENERIC REPLIES ─────────────────────────────────────────────────────
+const REPLIES = [
+  "That is genuinely so interesting to hear! I had no idea things worked that way over there. You know, back here we have a completely different way of doing it and it's funny how much the culture shapes the little everyday habits. I'd love to visit someday and experience it firsthand rather than just reading about it online.",
+  "Haha, I completely know what you mean! It's one of those things that sounds so strange from the outside but once you live it, it just becomes totally normal. My family always laughs at me when I try to explain it to them — they think I've gone a bit mad from all my travels honestly.",
+  "Really? I had absolutely no idea about that! You know what, this is exactly why I love talking to people from different parts of the world. You learn things you'd never pick up from any book or documentary. How long has that been a part of the culture there?",
+  "Oh wow, you should definitely come visit my country someday! I think you would absolutely love it here. The food alone would blow your mind — we have dishes that have been passed down for hundreds of years and every family has their own secret version. Plus the landscapes are just stunning.",
+  "What's the weather actually like there right now? I always imagine it's so different from what we have here. We've been dealing with some really unusual weather lately — either way too hot or suddenly freezing, nobody can predict it anymore. Climate change is really showing up in strange ways.",
+  "I love learning about different cultures, it honestly makes me feel more connected to the world in a way that nothing else does. Social media gives you a surface level view but actually talking to someone real from that place is completely different. You get the real stories, the honest experiences.",
+  "That's amazing! How long have you been doing that? I tried something similar a few years ago and I have to say it completely changed how I see things. Before I started I was quite close-minded about it but now I'd recommend it to literally everyone I know.",
+  "Ha! Same here actually, funny that we have that in common! Sometimes I forget how much we all share underneath the different languages and traditions. At the end of the day people everywhere just want the same basic things — good food, good company, and something to laugh about.",
+  "Oh my goodness, that's such a wild story! I can't believe that actually happened. Did everyone around you just carry on as normal or was there a big reaction? Over here something like that would be the talk of the neighborhood for months honestly, people never let things go.",
+  "That makes a lot of sense when you put it that way. I've been thinking about it from the wrong angle I think. It's so easy to project your own context onto other people's situations without realizing you're doing it. Thanks for explaining — I feel like I understand so much better now.",
+  "You know what, Kenya has always been on my bucket list! I keep seeing incredible photos of the Maasai Mara and Amboseli online and every single time I think 'this is the year I'm finally going' and then something comes up. One day though, I'm absolutely determined.",
+  "The food must be so incredible there honestly. I'm a complete foodie and I've been watching so many videos about East African cuisine lately — the use of spices and the way everything is so communal and shared. It's the kind of eating I really love, not just fuel but an actual experience.",
+  "I started learning about that culture a few months ago and honestly it has become a bit of an obsession for me already. The history is so deep and layered and every time I think I've understood something I realize there's another whole dimension to it. It's humbling in the best way.",
+  "Your English is seriously so good by the way! I always feel a bit embarrassed when I'm the only one speaking just one language. I've been trying to learn a second language for years but I keep giving up after about two months when it gets hard. Any advice on how to actually stick with it?",
+  "That's such a beautiful way to look at it. I think sometimes we get so caught up in our own corner of the world and our own daily routine that we forget how big and varied everything actually is. Conversations like this are genuinely good for the soul I think.",
+  "Oh interesting! I've heard conflicting things about that so it's good to get a perspective from someone who actually lives there. The media here tends to paint a very one-dimensional picture of places it doesn't fully understand, which is frustrating. What's the reality actually like day to day?",
+  "Ha, that is so funny that you say that! My friends and I were literally just having a debate about something very related to this last week and we couldn't agree at all. I'm definitely going to share what you just said because I think it might settle the argument once and for all.",
+  "What kind of music are you into? I ask because I feel like music is one of those universal things that crosses every single border. I've been listening to a lot of African music lately and it just has this incredible energy that I can't find anywhere else. It makes you want to get up and dance immediately.",
+  "That's honestly so fascinating to me. I studied a bit of history in school but we only ever learned about Europe and a tiny bit of America — the rest of the world was basically invisible in the curriculum which is such a shame when you think about how much incredible history is out there.",
+  "I can't imagine what it's like to experience all four seasons so dramatically like that. Here we basically have two seasons — a wet one and a slightly less wet one haha. But there's something magical about real snow and proper autumn colors that I've always dreamed of experiencing in person.",
+  "You know I actually think Kenya and my country have more in common than people realize. Both growing so fast, both dealing with the same mixture of holding onto tradition while also embracing modernity, both with incredibly young and ambitious populations. The future feels exciting from where I'm standing.",
+  "My grandmother used to always say that you don't really know a place until you've eaten in someone's home there. Not a restaurant, someone's actual kitchen where the recipes haven't changed in three generations. I think about that a lot when I'm traveling and try to make it happen whenever I can.",
+  "Honestly the more I chat with people from around the world the more I realize that the news gives such a distorted view of everything. Every place has problems but every place also has so much beauty and resilience and humor that just never makes it onto the screen. Real conversations are everything.",
+  "That's wild! I've never even considered that angle before. You've genuinely given me something to think about today. I love when a conversation shifts your perspective like that — it doesn't happen as often as you'd think even when you're actively trying to stay open-minded and curious.",
+  "Do you ever feel like the world is getting smaller and bigger at the same time? Like technology connects us in ways that were unimaginable even twenty years ago, but then some days everything feels so overwhelming and divided. I go back and forth on whether the internet has been a net positive for human connection.",
+  "I think one of the most beautiful things about traveling — even virtually through conversations — is realizing that your way of seeing things is just one way among billions. It's very humbling actually and I mean that in the best possible sense, not in a discouraging way at all.",
+  "That is such a mood honestly. Some days everything just clicks and you feel on top of the world, and other days the smallest thing throws off the whole energy. I've been trying to be more intentional about the mornings because I find they set the tone for everything that follows.",
+  "Oh we have something very similar here! It's one of those things where you grow up thinking it's completely unique to your culture and then you talk to someone halfway across the world and realize it's basically universal human behavior. Makes you wonder what else we've been thinking was special but actually isn't.",
+  "I really hope things improve with the global situation. It's been such a strange few years for everyone everywhere and I think we all deserve a bit of calm and stability now. On a personal level people are just trying to get on with things and build something decent for themselves and their families.",
+  "Your country produces some genuinely outstanding athletes — and not just in running! The sporting culture there seems so strong and so community-rooted. Over here sport is kind of corporate and detached from the grassroots in a way that I think really hurts the overall culture and the quality of the athletes.",
+  "I've been trying to cook more food from other cultures lately. It's such a good way to connect with a place even when you can't physically be there. Last month I attempted jollof rice which was an adventure, and this week I want to try something from East Africa. Any recommendations from your end?",
+  "The entrepreneurial energy coming out of Africa right now is honestly incredible to follow from here. The innovation in mobile payments and fintech especially — Mpesa changed the whole world's understanding of what was possible and now everyone's following that model. Kenya really led the way on that one.",
+  "What do young people there care most about right now? I feel like the youth everywhere are carrying so much weight — climate, economy, political instability — but they also seem more globally connected and empathetic than any previous generation. I find that genuinely hopeful even when the news is bad.",
+  "Sometimes I think the best conversations happen completely by accident with strangers who had no reason to connect. Something about the randomness makes you both more honest somehow. There's no history, no judgment, just two people genuinely curious about each other's world. That's actually quite rare and precious.",
+];
 
 // Transactions loaded live from backend
 
@@ -147,7 +277,6 @@ function Avatar({ emoji, size = 42, online }) {
   </div>;
 }
 
-// Field component with validation display
 function Field({ label, name, type="text", placeholder, value, onChange, error, hint, children }) {
   return (
     <div className="field">
@@ -276,7 +405,7 @@ function LandingPage() {
             </button>
           </div>
           <div style={{ display:"flex", gap:10, marginTop:"3rem", flexWrap:"wrap", justifyContent:"center" }}>
-            {["💬 Real-time chat","💰 Earn per session","📤 M-PESA withdrawals","🌍 Global users"].map(f => (
+            {["💬 Real-time chat","💰 Earn per session","📤 M-PESA withdrawals","🌍 100+ global users"].map(f => (
               <span key={f} style={{ background:"#0f1623", border:"1px solid rgba(255,255,255,0.07)",
                 borderRadius:20, padding:"7px 16px", fontSize:13, color:"rgba(232,237,245,0.4)" }}>{f}</span>
             ))}
@@ -498,7 +627,7 @@ function ChatListPage() {
       <div className="anim-fadeup">
         <div style={{ marginBottom:"1.4rem" }}>
           <h2 style={{ fontSize:22, fontWeight:800, letterSpacing:"-0.5px" }}>Messages</h2>
-          <p style={{ color:"rgba(232,237,245,0.4)", fontSize:13, marginTop:3 }}>Chat and earn Ksh 150 per session</p>
+          <p style={{ color:"rgba(232,237,245,0.4)", fontSize:13, marginTop:3 }}>Chat and earn Ksh 150 per session · {DEMO_USERS.length} users online</p>
         </div>
         <div style={{ position:"relative", marginBottom:"1rem" }}>
           <span style={{ position:"absolute", left:14, top:"50%", transform:"translateY(-50%)", fontSize:16, pointerEvents:"none" }}>🔍</span>
@@ -552,21 +681,11 @@ function ChatRoomPage({ userId }) {
   const [earned, setEarned] = useState(0);
   const [typing, setTyping] = useState(false);
   const bottomRef = useRef(null);
+  const replyIndexRef = useRef(Math.floor(Math.random() * REPLIES.length));
 
   useEffect(() => { bottomRef.current?.scrollIntoView({ behavior:"smooth" }); }, [messages]);
 
   if (!person) { navigate("#/chat"); return null; }
-
-  const REPLIES = [
-    "That's so interesting! Tell me more 😊",
-    "Haha, I know exactly what you mean!",
-    "Really? I didn't know that about Kenya 🇰🇪",
-    "You should visit my country sometime!",
-    "What's the weather like there right now?",
-    "I love learning about different cultures!",
-    "That's amazing! How long have you been doing that?",
-    "Ha! Same here actually 😄",
-  ];
 
   const sendMessage = () => {
     if (!input.trim()) return;
@@ -578,12 +697,14 @@ function ChatRoomPage({ userId }) {
     addEarning(150);
     setTyping(true);
     setTimeout(() => {
-      const reply = REPLIES[Math.floor(Math.random()*REPLIES.length)];
+      // cycle through replies in order so they don't repeat quickly
+      const reply = REPLIES[replyIndexRef.current % REPLIES.length];
+      replyIndexRef.current += 1;
       const t2 = new Date();
       setMessages(m => [...m, { from:"them", text:reply,
         time:`${t2.getHours()}:${String(t2.getMinutes()).padStart(2,"0")}` }]);
       setTyping(false);
-    }, 1200 + Math.random()*800);
+    }, 1400 + Math.random()*1000);
   };
 
   return (
@@ -617,10 +738,10 @@ function ChatRoomPage({ userId }) {
         {messages.map((m, i) => (
           <div key={i} style={{ display:"flex", justifyContent:m.from==="me"?"flex-end":"flex-start",
             animation:"msgIn 0.25s ease both" }}>
-            <div style={{ maxWidth:"72%", padding:"10px 14px",
+            <div style={{ maxWidth:"78%", padding:"10px 14px",
               borderRadius:m.from==="me"?"16px 16px 4px 16px":"16px 16px 16px 4px",
               background:m.from==="me"?"linear-gradient(135deg,#00e5a0,#00b87a)":"#161e2e",
-              color:m.from==="me"?"#080c14":"#e8edf5", fontSize:14, lineHeight:1.5,
+              color:m.from==="me"?"#080c14":"#e8edf5", fontSize:14, lineHeight:1.6,
               border:m.from==="me"?"none":"1px solid rgba(255,255,255,0.07)" }}>
               {m.text}
               <div style={{ fontSize:10, marginTop:4, opacity:0.6, textAlign:"right" }}>{m.time}</div>
@@ -667,7 +788,6 @@ function EarningsPage() {
   const fee = Math.round(gross * 0.2);
   const net = gross - fee;
 
-  // Fetch real paid boosts (withdrawals) from backend
   const [boosts, setBoosts] = useState([]);
   const [loadingBoosts, setLoadingBoosts] = useState(true);
 
@@ -678,7 +798,6 @@ function EarningsPage() {
       .catch(() => setLoadingBoosts(false));
   }, [user.id]);
 
-  // Build transaction list: chat earnings + real fee payments
   const chatSessions = Math.floor(gross / 150);
   const chatTxns = Array.from({ length: chatSessions }, (_, i) => ({
     id: `chat-${i}`, type: "earn",
@@ -760,7 +879,7 @@ function EarningsPage() {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// PAGE: WITHDRAW  (real M-PESA fee payment via /api/boosts/pay)
+// PAGE: WITHDRAW
 // ═══════════════════════════════════════════════════════════════════════════════
 function WithdrawPage() {
   const { user, withdraw } = useAuth();
@@ -769,7 +888,7 @@ function WithdrawPage() {
   const [phoneErr, setPhoneErr] = useState("");
   const [amountErr, setAmountErr] = useState("");
   const [apiError, setApiError] = useState("");
-  const [step, setStep] = useState("form");   // form | paying | waiting | success | failed
+  const [step, setStep] = useState("form");
   const [loading, setLoading] = useState(false);
   const [boostId, setBoostId] = useState(null);
   const [pollCount, setPollCount] = useState(0);
@@ -778,18 +897,17 @@ function WithdrawPage() {
   const platformFee = Math.round(gross * 0.2);
   const available = gross - platformFee;
   const amtNum = Number(amount);
-  const withdrawFee = Math.round(amtNum * 0.2);  // fee on the withdrawal amount
+  const withdrawFee = Math.round(amtNum * 0.2);
 
   const handleRequest = () => {
     setAmountErr(""); setPhoneErr(""); setApiError("");
     let valid = true;
-    if (!amtNum || amtNum < 50)      { setAmountErr("Minimum withdrawal is Ksh 50"); valid = false; }
+    if (!amtNum || amtNum < 1000)      { setAmountErr("Minimum withdrawal is Ksh 1000"); valid = false; }
     else if (amtNum > available)     { setAmountErr(`Only Ksh ${available} available`); valid = false; }
     if (!phone.match(/^(07|01|254|\+254)\d{8,9}$/)) { setPhoneErr("Enter a valid M-PESA number"); valid = false; }
     if (valid) setStep("confirm");
   };
 
-  // Step 1: trigger STK push for platform fee
   const handlePayFee = async () => {
     setLoading(true);
     setApiError("");
@@ -821,10 +939,9 @@ function WithdrawPage() {
     }
   };
 
-  // Step 2: poll for payment confirmation
   useEffect(() => {
     if (step !== "waiting" || !boostId) return;
-    if (pollCount > 20) { setStep("failed"); return; }  // timeout after ~60s
+    if (pollCount > 20) { setStep("failed"); return; }
     const timer = setTimeout(async () => {
       try {
         const res = await fetch(`${API}/api/boosts/${boostId}`);
@@ -967,7 +1084,7 @@ function WithdrawPage() {
         <div className="card">
           <Field label="Amount to Withdraw (Ksh)" type="number" value={amount}
             onChange={v => { setAmount(v); setAmountErr(""); }}
-            placeholder="e.g. 500" error={amountErr}/>
+            placeholder="e.g. 1000" error={amountErr}/>
 
           {amtNum > 0 && (
             <div style={{ background:"rgba(255,95,109,0.06)", border:"1px solid rgba(255,95,109,0.15)",
@@ -983,7 +1100,7 @@ function WithdrawPage() {
             placeholder="07XX or 254XX" error={phoneErr}/>
 
           <div style={{ display:"flex", gap:8, marginBottom:"1rem", flexWrap:"wrap" }}>
-            {[200, 500, 1000, available].filter((v,i,a) => a.indexOf(v)===i && v>=50).map(v => (
+            {[1000, 2000, 5000, available].filter((v,i,a) => a.indexOf(v)===i && v>=50).map(v => (
               <button key={v} onClick={() => setAmount(String(v))}
                 style={{ background:Number(amount)===v?"rgba(0,229,160,0.12)":"#161e2e",
                   border:`1px solid ${Number(amount)===v?"rgba(0,229,160,0.4)":"rgba(255,255,255,0.07)"}`,
