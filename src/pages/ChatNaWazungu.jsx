@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, createContext, useContext } from "react";
 
-const API = "https://fulz-5lgr.onrender.com";
+const API = "https://fulz-1.onrender.com";
 
 // ─── ROUTER ───────────────────────────────────────────────────────────────────
 function useRoute() {
